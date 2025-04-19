@@ -12,7 +12,6 @@ struct std::formatter<Geometry::Point> {
             format_one.push_back(*it);
         }
         format_ = "({:" + format_one + "}, {:" + format_one + "})";
-        // std::format_to(std::back_inserter(format_), "({{{0}}}, {{{0}}})", format_one);
         return it;
     }
 
@@ -24,13 +23,19 @@ struct std::formatter<Geometry::Point> {
 
 template<>
 struct std::formatter<Geometry::Rect> {
-    //using std::formatter<int, char>::parse;
+    std::string format_;
     constexpr auto parse(std::format_parse_context &ctx) {
-        return ctx.begin();
+        std::string format_one;
+        auto it = ctx.begin();
+        for (; it != ctx.end() && *it != '}'; ++it) {
+            format_one.push_back(*it);
+        }
+        format_ = "[{:" + format_one + "}, {:" + format_one + "}]";
+        return it;
     }
 
     template<typename FmtCtx>
     typename FmtCtx::iterator format(const Geometry::Rect &obj, FmtCtx &ctx) const {
-        return std::vformat_to(ctx.out(), ctx.locale(), "[{}, {}]", std::make_format_args(obj.left_top, obj.right_bottom));
+        return std::vformat_to(ctx.out(), ctx.locale(), format_, std::make_format_args(obj.left_top, obj.right_bottom));
     }
 };
