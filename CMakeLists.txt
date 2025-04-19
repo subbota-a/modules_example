@@ -18,3 +18,6 @@ target_sources(modules_example
     modules/calculating.cppm
     modules/geometry.cppm
 )
+if (MSVC)
+    target_compile_options(modules_example PRIVATE "/utf-8")
+endif ()

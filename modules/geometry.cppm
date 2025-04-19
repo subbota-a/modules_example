@@ -8,7 +8,7 @@ export struct Point {
     friend Point operator+(const Point &a, const Point &b);
 };
 
-Point operator+(const Point &a, const Point &b)
+export Point operator+(const Point &a, const Point &b)
 {
     return Point{
         .x = a.x + b.x,
@@ -22,7 +22,7 @@ export struct Rect {
     friend Rect operator+(const Rect &rec, const Point &vec);
 };
 
-Rect operator+(const Rect &rec, const Point &vec)
+export Rect operator+(const Rect &rec, const Point &vec)
 {
     return Rect{
         .left_top = rec.left_top + vec,
