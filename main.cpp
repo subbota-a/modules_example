@@ -18,10 +18,10 @@ int main()
     std::print("Localized: {:L%d %B}\n", std::chrono::system_clock::now());
     std::print("C Locale : {:%d %B}\n", std::chrono::system_clock::now());
 
-    const auto point1 = Geometry::Point{.x = 1000, .y = 1500};
-    const auto point2 = point1 + Geometry::Point{2, 4};
-    const auto rect1 = Geometry::Rect{.left_top = point1, .right_bottom = point2};
-    const auto rect2 = rect1 + point1;
+    constexpr auto point1 = Geometry::Point{.x = 1000, .y = 1500};
+    constexpr auto point2 = point1 + Geometry::Point{2, 4};
+    constexpr auto rect1 = Geometry::Rect{.left_top = point1, .right_bottom = point2};
+    constexpr auto rect2 = rect1 + point1;
 
     std::println("Localized: point1 = {:L}", point1);
     std::println("C locale : point2 = {}", point2);
