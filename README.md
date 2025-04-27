@@ -9,4 +9,5 @@ This is a simple project demonstrating the usage of C++20 modules. It's built us
 ## Prerequisites
 
 - CMake (3.28 or newer)
-- A C++23 compliant compiler with modules support
+- Ninja 1.12+
+- clang 18+, gcc 15+, cl 19.44+
